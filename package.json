@@ -1,0 +1,32 @@
+{
+  "name": "nuxt-exam",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "prisma:migration": "yarn prisma migrate dev --name initial",
+    "prisma:generate": "yarn prisma generate",
+    "prisma:migrate": "yarn prisma:migration && yarn prisma:generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@prisma/client": "^4.8.1",
+    "bcryptjs": "^2.4.3",
+    "core-js": "^3.25.3",
+    "jsonwebtoken": "^9.0.0",
+    "nuxt": "^2.15.8",
+    "nuxt-buefy": "^0.4.24",
+    "vue": "^2.7.10",
+    "vue-server-renderer": "^2.7.10",
+    "vue-template-compiler": "^2.7.10"
+  },
+  "devDependencies": {
+    "prisma": "^4.8.1"
+  },
+  "prisma": {
+    "schema": "./api/db/schema.prisma"
+  }
+}

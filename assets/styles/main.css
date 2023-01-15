@@ -1,0 +1,17 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+.is-screenheight {
+  height: 100vh;
+}
+.is-screenwidth {
+  height: 100vh;
+}
+.is-fullwidth {
+  width: 100%;
+}
+.is-fullheight {
+  height: 100%;
+}
