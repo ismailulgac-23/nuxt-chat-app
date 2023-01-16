@@ -1,24 +1,19 @@
 <template>
-  <div
-    :class="[
-      getBothClasses.wrapper,
+  <div :class="[
+    getBothClasses.wrapper,
+    {
+      [getIsMeClasses.wrapper]: isMe,
+      [getOtherClasses.wrapper]: !isMe,
+    },
+  ]">
+    <div :class="[
+      getBothClasses.message,
       {
-        [getIsMeClasses.wrapper]: isMe,
-        [getOtherClasses.wrapper]: !isMe,
+        [getIsMeClasses.message]: isMe,
+        [getOtherClasses.message]: !isMe,
       },
-    ]"
-  >
-    <div
-      :class="[
-        getBothClasses.message,
-        {
-          [getIsMeClasses.message]: isMe,
-          [getOtherClasses.message]: !isMe,
-        },
-      ]"
-      style="justify-content: start"
-    >
-      Selam naber nasılsınız John bey
+    ]" style="justify-content: start">
+      {{ data.content }}
     </div>
   </div>
 </template>
@@ -26,13 +21,11 @@
 <script>
 export default {
   name: "Message",
-  props: {
-    isMe: {
-      type: Boolean,
-      default: () => false,
-    },
-  },
+  props: ['data'],
   computed: {
+    isMe() {
+      return this.data.senderUuid === this.$auth.user.uuid;
+    },
     getBothClasses() {
       return {
         wrapper: "is-flex",

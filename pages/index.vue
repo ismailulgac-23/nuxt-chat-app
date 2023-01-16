@@ -4,7 +4,7 @@
       <div class="column is-fullheight">
         <Sidebar />
       </div>
-      <div class="column is-four-fifths">
+      <div class="column is-three-quarters">
         <ChatWrapper />
       </div>
     </div>

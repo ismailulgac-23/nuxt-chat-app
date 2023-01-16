@@ -1,5 +1,5 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  telemetry: false,
   head: {
     title: "nuxt-exam",
     htmlAttrs: {
@@ -13,35 +13,33 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
-
   router: {
     middleware: "auth",
   },
-
-  // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["~/assets/styles/main.css"],
-
   serverMiddleware: ["~/api/index.js"],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/buefy
     "nuxt-buefy",
     "@nuxtjs/axios",
+    "@nuxtjs/auth-next"
   ],
-
   axios: {
-    baseURL: "http://localhost:3000/api",
+    baseURL: "http://localhost:3000/api"
   },
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  auth: {
+    watchLoggedIn: true,
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: "auth/login", method: "post", propertyName: "login" },
+          user: { url: "auth/on-auth", method: "get", propertyName: "onAuth" },
+          logout: false
+        }
+      }
+    }
+  },
   build: {},
 };

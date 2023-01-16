@@ -1,5 +1,3 @@
-export default function ({ store, redirect }) {
-  /* if (!store.state.user.user) {
-    redirect("/");
-  } */
+export default function ({ store, $router, $axios, redirect }) {
+  console.log('auth')
 }

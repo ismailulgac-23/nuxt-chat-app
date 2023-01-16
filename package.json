@@ -9,16 +9,21 @@
     "generate": "nuxt generate",
     "prisma:migration": "yarn prisma migrate dev --name initial",
     "prisma:generate": "yarn prisma generate",
-    "prisma:migrate": "yarn prisma:migration && yarn prisma:generate"
+    "prisma:migrate": "yarn prisma:migration && yarn prisma:generate",
+    "server:seed": "yarn prisma migrate reset && node ./api/seed/index.js"
   },
   "dependencies": {
+    "@nuxtjs/auth-next": "5.0.0-1667386184.dfbbb54",
     "@nuxtjs/axios": "^5.13.6",
     "@prisma/client": "^4.8.1",
     "bcryptjs": "^2.4.3",
+    "cookie-universal-nuxt": "^2.2.2",
     "core-js": "^3.25.3",
+    "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "nuxt": "^2.15.8",
     "nuxt-buefy": "^0.4.24",
+    "uuid": "^9.0.0",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"

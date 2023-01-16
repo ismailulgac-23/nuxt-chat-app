@@ -1,12 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -25,15 +22,20 @@ model Chat {
   creatorUuid String
   createdAt   DateTime @default(now())
 
-  creator  User?     @relation(fields: [creatorUuid], references: [uuid])
+  name String
+
+  members  ChatMember[]
+  creator  User?        @relation(fields: [creatorUuid], references: [uuid])
   messages Message[]
 }
 
 model ChatMember {
   uuid      String   @id @default(uuid())
   userUuid  String
-  user      User?    @relation(fields: [userUuid], references: [uuid])
+  chatUuid  String
   createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userUuid], references: [uuid])
+  chat      Chat?    @relation(fields: [chatUuid], references: [uuid])
 }
 
 model Message {

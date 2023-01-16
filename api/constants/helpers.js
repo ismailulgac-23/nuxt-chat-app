@@ -1,3 +1,9 @@
+const { sign } = require("jsonwebtoken");
+const { v4: uuidv4 } = require('uuid');
+
+
+module.exports.createUUID = () => uuidv4();
+
 module.exports.createTx = async (callback, res) => {
   try {
     await callback();
@@ -8,3 +14,5 @@ module.exports.createTx = async (callback, res) => {
     });
   }
 };
+
+module.exports.createToken = (user) => sign({ user }, process.env.JWT_SECRET_KEY);
